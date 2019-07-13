@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://articleapi.com/soap/apiservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://articleapi.com/soap/apiservice">
+<types>
+<xsd:schema targetNamespace="http://articleapi.com/soap/apiservice"
+>
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+</xsd:schema>
+</types>
+<message name="apI.loginRequest">
+  <part name="username" type="xsd:string" />
+  <part name="password" type="xsd:string" /></message>
+<message name="apI.loginResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="apI.createuserRequest">
+  <part name="name" type="xsd:string" />
+  <part name="email" type="xsd:string" />
+  <part name="password" type="xsd:string" /></message>
+<message name="apI.createuserResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="apI.createarticleRequest">
+  <part name="logintoken" type="xsd:string" />
+  <part name="title" type="xsd:string" />
+  <part name="body" type="xsd:string" /></message>
+<message name="apI.createarticleResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="apI.viewarticleRequest">
+  <part name="logintoken" type="xsd:string" /></message>
+<message name="apI.viewarticleResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="apI.deleRequest">
+  <part name="title" type="xsd:string" />
+  <part name="logintoken" type="xsd:string" /></message>
+<message name="apI.deleResponse">
+  <part name="return" type="xsd:string" /></message>
+<message name="apI.userinfoRequest">
+  <part name="logintoken" type="xsd:string" /></message>
+<message name="apI.userinfoResponse">
+  <part name="return" type="xsd:string" /></message>
+<portType name="apiservicePortType">
+  <operation name="apI.login">
+    <input message="tns:apI.loginRequest"/>
+    <output message="tns:apI.loginResponse"/>
+  </operation>
+  <operation name="apI.createuser">
+    <input message="tns:apI.createuserRequest"/>
+    <output message="tns:apI.createuserResponse"/>
+  </operation>
+  <operation name="apI.createarticle">
+    <input message="tns:apI.createarticleRequest"/>
+    <output message="tns:apI.createarticleResponse"/>
+  </operation>
+  <operation name="apI.viewarticle">
+    <input message="tns:apI.viewarticleRequest"/>
+    <output message="tns:apI.viewarticleResponse"/>
+  </operation>
+  <operation name="apI.dele">
+    <input message="tns:apI.deleRequest"/>
+    <output message="tns:apI.deleResponse"/>
+  </operation>
+  <operation name="apI.userinfo">
+    <input message="tns:apI.userinfoRequest"/>
+    <output message="tns:apI.userinfoResponse"/>
+  </operation>
+</portType>
+<binding name="apiserviceBinding" type="tns:apiservicePortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="apI.login">
+    <soap:operation soapAction="http://articleapi.com/apiarticle.php/apI.login" style="rpc"/>
+    <input><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="apI.createuser">
+    <soap:operation soapAction="http://articleapi.com/apiarticle.php/apI.createuser" style="rpc"/>
+    <input><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="apI.createarticle">
+    <soap:operation soapAction="http://articleapi.com/apiarticle.php/apI.createarticle" style="rpc"/>
+    <input><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="apI.viewarticle">
+    <soap:operation soapAction="http://articleapi.com/apiarticle.php/apI.viewarticle" style="rpc"/>
+    <input><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="apI.dele">
+    <soap:operation soapAction="http://articleapi.com/apiarticle.php/apI.dele" style="rpc"/>
+    <input><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="apI.userinfo">
+    <soap:operation soapAction="http://articleapi.com/apiarticle.php/apI.userinfo" style="rpc"/>
+    <input><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+</binding>
+<service name="apiservice">
+  <port name="apiservicePort" binding="tns:apiserviceBinding">
+    <soap:address location="http://articleapi.com/apiarticle.php"/>
+  </port>
+</service>
+</definitions>

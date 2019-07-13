@@ -1,0 +1,22 @@
+for login
+username in param
+password in param
+token in param
+SERVER
+$server = new soap_server();
+$server->configureWSDL("foodservice");
+
+$server->register("food.getFood",
+array("type" => "xsd:string"),
+array("return" => "xsd:string"));
+$server->service(file_get_contents("php://input"));
+
+Client File
+$client = new nusoap_client("http://wsdl.local/soap/soap_server.php");
+
+$error = $client->getError();
+if($error)
+{
+echo "<h2>Constructor error</h2><pre>" . $error . "</pre>";
+}
+$result = $client->call("food.getFood", array("type" => "Desert"));
